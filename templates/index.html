@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>URL Shortener</h2>
+
+        <form method="POST">
+            <input type="text" name="url" placeholder="Введите ссылку..." required>
+            <button type="submit">Сократить</button>
+        </form>
+
+        <a href="/stats" class="stats-button">Статистика</a>
+    </div>
+</body>
+</html>

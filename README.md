@@ -20,4 +20,4 @@
 
 ```bash
 pip install -r requirements.txt
-python app.py# url_shortener
+python app.py

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Статистика</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .table-wrapper {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #f3f4f6;
+            font-weight: 600;
+        }
+
+        tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .short-link {
+            color: #4f46e5;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .short-link:hover {
+            text-decoration: underline;
+        }
+
+        .clicks {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .top-link {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #4f46e5;
+        }
+
+        .top-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 Статистика ссылок</h2>
+
+        <a href="/" class="top-link">← Создать новую ссылку</a>
+
+        {% if urls %}
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Оригинальный URL</th>
+                        <th>Короткая ссылка</th>
+                        <th>Клики</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for url in urls %}
+                    <tr>
+                        <td>{{ url[0] }}</td>
+                        <td>
+                            <a class="short-link" href="{{ request.host_url }}{{ url[1] }}" target="_blank">
+                                {{ request.host_url }}{{ url[1] }}
+                            </a>
+                        </td>
+                        <td class="clicks">{{ url[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <p>Пока нет созданных ссылок</p>
+        {% endif %}
+    </div>
+</body>
+</html>

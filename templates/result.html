@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Готово</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Готово!</h2>
+        <p>Ваша короткая ссылка:</p>
+
+        <a class="short-link" href="{{ short_url }}" target="_blank">
+            {{ short_url }}
+        </a>
+
+        <a class="back-link" href="/">Назад</a>
+    </div>
+</body>
+</html>
